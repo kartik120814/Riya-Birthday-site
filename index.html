@@ -38,6 +38,93 @@ img {
 </head>
 
 <body>
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background: linear-gradient(to top, #1a0026, #4b0082);
+  font-family: Arial;
+  color: white;
+  text-align: center;
+}
+
+/* BALLOONS */
+.balloon {
+  position: absolute;
+  bottom: -100px;
+  width: 60px;
+  height: 80px;
+  background: radial-gradient(circle at 30% 30%, #d9a7ff, #6a0dad);
+  border-radius: 50%;
+  animation: floatUp 12s linear infinite;
+}
+
+.balloon::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 50px;
+  background: white;
+  top: 80px;
+  left: 50%;
+}
+
+/* HEARTS */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff66cc;
+  transform: rotate(45deg);
+  animation: floatUp 8s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff66cc;
+  border-radius: 50%;
+}
+
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: -10px; top: 0; }
+
+/* ANIMATION */
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1;}
+  100% { transform: translateY(-110vh) rotate(360deg); opacity: 0;}
+}
+</style>
+
+<div id="effects"></div>
+
+<script>
+function createBalloon() {
+  let b = document.createElement("div");
+  b.className = "balloon";
+  b.style.left = Math.random() * 100 + "vw";
+  b.style.animationDuration = (8 + Math.random() * 5) + "s";
+  document.getElementById("effects").appendChild(b);
+
+  setTimeout(() => b.remove(), 13000);
+}
+
+function createHeart() {
+  let h = document.createElement("div");
+  h.className = "heart";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = (5 + Math.random() * 5) + "s";
+  document.getElementById("effects").appendChild(h);
+
+  setTimeout(() => h.remove(), 10000);
+}
+
+setInterval(createBalloon, 800);
+setInterval(createHeart, 500);
+</script>
 <div class="balloons">
   <span></span>
   <span></span>
