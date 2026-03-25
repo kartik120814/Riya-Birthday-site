@@ -38,6 +38,35 @@ img {
 </head>
 
 <body>
+<div class="balloons">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<style>
+.balloons span {
+  position: absolute;
+  bottom: -100px;
+  width: 40px;
+  height: 50px;
+  background: pink;
+  border-radius: 50%;
+  animation: float 10s linear infinite;
+}
+
+.balloons span:nth-child(2){left:20%; background:red;}
+.balloons span:nth-child(3){left:40%; background:purple;}
+.balloons span:nth-child(4){left:60%; background:blue;}
+.balloons span:nth-child(5){left:80%; background:orange;}
+
+@keyframes float {
+  0% {transform: translateY(0);}
+  100% {transform: translateY(-100vh);}
+}
+</style>
 
 <div class="section" id="s1" style="display:block;">
     <h1>Happy Birthday
